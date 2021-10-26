@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Order extends StatefulWidget {
-  Order({Key? key}) : super(key: key);
+  const Order({Key? key}) : super(key: key);
 
   @override
   _OrderState createState() => _OrderState();
