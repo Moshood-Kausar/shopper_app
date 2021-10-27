@@ -12,15 +12,16 @@ List<ProductModel> productItems = [
   ProductModel(
     amount: '345',
     name: 'Red AirPods Max',
-    img: 'assets/red.png',
+    img: 'assets/black.png',
     Bcolor: '.yellow[100]',
   ),
-  ProductModel(
-    amount: '250',
-    name: 'Black AirPods Max',
+   ProductModel(
+    amount: '345',
+    name: 'Red AirPods Max',
     img: 'assets/black.png',
-    Bcolor: '.green[100]',
+    Bcolor: '.yellow[100]',
   ),
+  
   ProductModel(
     amount: '300',
     name: 'Blue AirPods Max',
