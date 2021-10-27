@@ -30,7 +30,17 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        actions: [IconButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (_) => const Order(),));}, icon:const Icon( Icons.add, color:Colors.black))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const Order(),
+                    ));
+              },
+              icon: const Icon(Icons.shopping_bag_rounded, color: Colors.black))
+        ],
         leading: IconButton(
           onPressed: () => _scaffoldKey.currentState!.openEndDrawer(),
           icon: const Icon(
@@ -41,33 +51,31 @@ class _HomePageState extends State<HomePage> {
         ),
         elevation: 0,
       ),
-       bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: onTapped,
         iconSize: 20,
         selectedItemColor: Colors.black,
-        
+
         unselectedItemColor: Colors.grey,
         selectedLabelStyle: const TextStyle(fontSize: 16),
         unselectedLabelStyle: const TextStyle(color: Colors.grey),
         type: BottomNavigationBarType.fixed,
         // ignore: prefer_const_literals_to_create_immutables
         items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.home),label: "  " ),
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: "  "),
           const BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),label: "  " ),
+              icon: Icon(Icons.favorite), label: "  "),
+          const BottomNavigationBarItem(icon: Icon(Icons.person), label: "  "),
           const BottomNavigationBarItem(
-              icon: Icon(Icons.person),label: "  " ),
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag), label: "  " ),
-         
+              icon: Icon(Icons.shopping_bag), label: "  "),
         ],
       ),
       body: _widget[_currentIndex],
-    
     );
   }
-   void onTapped(int index) {
+
+  void onTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
