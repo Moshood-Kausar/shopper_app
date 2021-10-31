@@ -22,13 +22,28 @@ class _DashBoardState extends State<DashBoard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(20)),
+              child:Padding(
+                padding: const EdgeInsets.only(left:8.0),
+                child: Row(children: [
+                  Icon(Icons.search, color: Colors.grey), 
+                  Text('Search...', style:TextStyle(color: Colors.grey))],),
+              )
+            ),
+          ),
+          SizedBox(height: 30),
           const Text("Popular",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
               )),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
@@ -36,14 +51,16 @@ class _DashBoardState extends State<DashBoard> {
               Icon(Icons.tune),
             ],
           ),
+          SizedBox(height:10),
           GestureDetector(
               onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => Order(),
+                      builder: (_) => const Order(),
                     ),
                   ),
-              child: Container(height: 300, width: 300, child: items())),
+              child: Container(height: 380, child: items())),
+          const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
@@ -55,7 +72,8 @@ class _DashBoardState extends State<DashBoard> {
               Text('View all', style: TextStyle(color: Colors.grey)),
             ],
           ),
-          Container(height: 300, width: 300, child: Ritems()),
+          const SizedBox(height: 20),
+          Container(height: 300, child: Ritems()),
         ],
       ))),
     );
@@ -67,32 +85,37 @@ class _DashBoardState extends State<DashBoard> {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.yellow[100],
-              image: DecorationImage(
-                  image: AssetImage('${productItems[index].img}'),
-                  fit: BoxFit.contain),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${productItems[index].name}',
-                      style: const TextStyle(
-                        color: Colors.black,
-                      )),
-                  Text('\$${productItems[index].amount}',
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
+          return Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Container(
+                height: 400,
+                width: 280,
+                //color: Colors.yellow[100],
+                color: '${productItems[index].bcolor}',
+                child: Padding(
+                  padding: const EdgeInsets.only(left:20.0),
+                  child: Column(
+                   
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                    Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                          
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              image: AssetImage('${productItems[index].img}'),
+                              fit: BoxFit.contain),
+                        )),
+                    Text('${productItems[index].name}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                        )),
+                    Text('\$${productItems[index].amount}',
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold)),
+                  ]),
+                )),
           );
         });
   }
@@ -103,32 +126,46 @@ class _DashBoardState extends State<DashBoard> {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.yellow[100],
-              image: DecorationImage(
-                  image: AssetImage('${productItems[index].img}'),
-                  fit: BoxFit.contain),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${productItems[index].name}',
-                      style: const TextStyle(
-                        color: Colors.black,
-                      )),
-                  Text('\$${productItems[index].amount}',
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
+          return Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.green[100],
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              image: AssetImage('${productItems[index].img}'),
+                              fit: BoxFit.contain),
+                        )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('${productItems[index].name}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                            )),
+                        Text('\$${productItems[index].amount}',
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                ])),
           );
         });
   }

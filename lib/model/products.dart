@@ -1,47 +1,48 @@
 class ProductModel {
   final String? img;
   final String? name;
-  final String? Bcolor;
+  final String? bcolor;
 
   final String? amount;
 
-  ProductModel({this.amount, this.name, this.img, this.Bcolor});
+  ProductModel({this.amount, this.name, this.img, this.bcolor});
 }
 
 List<ProductModel> productItems = [
   ProductModel(
     amount: '345',
     name: 'Red AirPods Max',
-    img: 'assets/black.png',
-    Bcolor: '.yellow[100]',
+    img: 'assets/pink.png',
+    bcolor: 'Colors.yellow[100]',
   ),
    ProductModel(
     amount: '345',
     name: 'Red AirPods Max',
     img: 'assets/black.png',
-    Bcolor: '.yellow[100]',
+    bcolor: 'Colors.yellow[100]',
   ),
   
   ProductModel(
     amount: '300',
     name: 'Blue AirPods Max',
     img: 'assets/blue.png',
-    Bcolor: '.pink[100]',
+    bcolor: 'Colors.pink[100]',
   ),
   ProductModel(
     amount: '400',
     name: 'Gold AirPods Max',
     img: 'assets/gold.png',
+    bcolor: 'Colors.pink[100]',
   ),
   ProductModel(
     amount: '356',
     name: 'Purple AirPods Max',
     img: 'assets/purple.png',
-    Bcolor: '.purple[100]',
+    bcolor: 'Colors.pink[100]',
   ),
   ProductModel(
       amount: '253',
       name: 'Purple AirPods Max',
       img: 'assets/pink.png',
-      Bcolor: '.yellow[100]'),
+      bcolor: 'Colors.pink[100]',)
 ];
