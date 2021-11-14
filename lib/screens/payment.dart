@@ -68,21 +68,29 @@ class _PaymentState extends State<Payment> {
                 child: Text('Payment Methods',
                     style: TextStyle(fontWeight: FontWeight.w600)),
               ),
-              ListTile(
-                visualDensity: const VisualDensity(vertical: 4),
-                tileColor: Colors.yellow,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                leading: Image.asset("assets/card3.jpg", height: 30.0),
-                title: const Text('Travel Card',
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
-                subtitle: const Text(
-                  'Master Card-3356',
-                  style: TextStyle(color: Colors.grey),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.indigo[50],),
+                  
+                  height:80,
+                  width: MediaQuery.of(context).size.width,
+                  child: ListTile(
+                    visualDensity: const VisualDensity(vertical: 4),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    leading: Image.asset("assets/card3.jpg", height: 30.0),
+                    title: const Text('Travel Card',
+                        style:
+                            TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                    subtitle: const Text(
+                      'Mastercard-3356',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios_outlined,
+                        color: Colors.black),
+                  ),
                 ),
-                trailing: const Icon(Icons.arrow_forward_ios_outlined,
-                    color: Colors.black),
               ),
               const SizedBox(height: 40),
               const Center(
@@ -97,25 +105,25 @@ class _PaymentState extends State<Payment> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
               ),
-              const SizedBox(height:100),
-               Padding(
-                 padding: const EdgeInsets.all(18.0),
-                 child: Container(
-                      height: 70,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Checkout",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                      ),
+              const SizedBox(height: 100),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Container(
+                  height: 70,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Checkout",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     ),
-               ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
