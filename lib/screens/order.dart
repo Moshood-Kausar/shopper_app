@@ -1,5 +1,8 @@
+import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:shopper_app/screens/dashboard.dart';
+import 'package:shopper_app/screens/payment.dart';
+//import 'package:carousel_indicator/carousel_indicator.dart';
 
 class Order extends StatefulWidget {
   const Order({Key? key}) : super(key: key);
@@ -9,13 +12,19 @@ class Order extends StatefulWidget {
 }
 
 class _OrderState extends State<Order> {
+  int pageIndex = 0;
+  final List<Widget> _pics = [
+    Image.asset('assets/red.png'),
+    Image.asset('assets/yellow.png'),
+    Image.asset('assets/purple.png'),
+    Image.asset('assets/gold.png'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(top: 70.0),
-        child: Scaffold(
-          
-          body: SingleChildScrollView(
+      padding: const EdgeInsets.only(top: 70.0),
+      child: Scaffold(
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left: 18.0, right: 18),
             child: Column(
@@ -36,54 +45,31 @@ class _OrderState extends State<Order> {
                     size: 30,
                   ),
                 ),
-                Container(
-                    height: 350,
-                    width: MediaQuery.of(context).size.width,
-                    // ignore: prefer_const_constructors
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      image: const DecorationImage(
-                          image: AssetImage(
-                            'assets/pink.png',
-                          ),
-                          fit: BoxFit.contain),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                              height: 3,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                              height: 3,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                              height: 3,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(10))),
-                        )
-                      ],
-                    )),
+                SizedBox(
+                  height: 300,
+                  width: MediaQuery.of(context).size.width,
+                  child: PageView(
+                    children: _pics,
+                    onPageChanged: (index) {
+                      setState(() {
+                        pageIndex = index;
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(height: 40),
+                Center(
+                  child: CarouselIndicator(
+                    count: _pics.length,
+                    index: pageIndex,
+                    width: 12,
+                    height: 4,
+                    color: Colors.grey,
+                    activeColor: Colors.black,
+                  ),
+                ),
                 const SizedBox(height: 20),
-                const Text('Headphones',
-                    style: TextStyle(color: Colors.grey)),
+                const Text('Headphones', style: TextStyle(color: Colors.grey)),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,19 +83,10 @@ class _OrderState extends State<Order> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                              radius: 15, backgroundColor: Colors.pink),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                              radius: 15, backgroundColor: Colors.grey),
-                        ),
-                        CircleAvatar(
-                            radius: 15, backgroundColor: Colors.black),
+                      children: [
+                        circle(backgroundColor: Colors.pink),
+                        circle(backgroundColor: Colors.grey),
+                        circle(backgroundColor: Colors.black)
                       ],
                     ),
                   ],
@@ -121,66 +98,84 @@ class _OrderState extends State<Order> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            child: const Center(
-                              child: Text("-",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w800)),
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                            ),
-                          ),
-                        ),
+                        text(text: '-'),
                         const Padding(
                           padding: EdgeInsets.only(right: 8.0),
                           child: Text(
                             '1',
                           ),
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          child: const Center(child: Text("+")),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                          ),
-                        ),
+                        text(text: '+'),
                       ],
                     ),
-                    const Text("\$549",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 25)),
+                    const Text(
+                      "\$549",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 25),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                    "High-Fidelity Audio The Apple-designed driver delivers high-fidelity playback ...",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18,
-                    )),
+                  "High-Fidelity Audio The Apple-designed driver delivers high-fidelity playback ...",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18,
+                  ),
+                ),
                 const SizedBox(height: 40),
-                Container(
-                  height: 70,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const Payment(),
+                    ),
+                  ),
+                  child: Container(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
                       color: Colors.black,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Center(
-                      child: Text("Buy Now",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white))),
-                )
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Buy Now",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-        ))
+        ),
+      ),
+    );
+  }
+
+  Widget circle({required Color backgroundColor}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: CircleAvatar(radius: 15, backgroundColor: backgroundColor),
+    );
+  }
+
+  Widget text({String? text}) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Container(
+        height: 20,
+        width: 20,
+        child: Center(
+          child: Text("$text",
+              style: const TextStyle(fontWeight: FontWeight.w800)),
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+        ),
+      ),
     );
   }
 }
