@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shopper_app/model/products.dart';
 import 'package:shopper_app/screens/order.dart';
 
-
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
 
@@ -53,23 +52,27 @@ class _DashBoardState extends State<DashBoard> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-               const SizedBox(height: 15),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
-                   Text("Sort by price", style: TextStyle(color: Colors.grey)),
+                  Text("Sort by price", style: TextStyle(color: Colors.grey)),
                   Icon(Icons.tune),
                 ],
               ),
               const SizedBox(height: 10),
               GestureDetector(
-                  onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const Order(),
-                        ),
-                      ),
-                  child: SizedBox(height: 380, child: items())),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const Order(),
+                  ),
+                ),
+                child: SizedBox(
+                  height: 380,
+                  child: items(),
+                ),
+              ),
               const SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
